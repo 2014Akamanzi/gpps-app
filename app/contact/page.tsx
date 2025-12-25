@@ -1,35 +1,88 @@
+import Link from "next/link";
+
 export default function ContactPage() {
   return (
-    <main className="min-h-screen px-4 py-12">
-      <div className="mx-auto w-full max-w-4xl space-y-8">
-        <h1 className="text-4xl font-extrabold text-slate-900">Contact</h1>
+    <main className="min-h-screen bg-white">
+      {/* Top bar */}
+      <div className="mx-auto w-full max-w-6xl px-4 pt-6">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+        >
+          ← Back to Home
+        </Link>
+      </div>
 
-        <div className="rounded-3xl bg-white border border-slate-200 shadow-sm p-8 sm:p-10 space-y-6">
-          <p className="text-slate-700">
-            For admissions enquiries, school visits, or general information, please reach out:
+      {/* Blue contact block */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-10">
+        <div className="rounded-[48px] bg-blue-600 px-6 py-12 sm:px-12 sm:py-16 shadow-xl">
+          <h1 className="text-center text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+            Contact Glad Pre and Primary School
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-3xl text-center text-base sm:text-xl text-white/90">
+            For admissions enquiries, school visits, or general information, please reach out to us using
+            the contacts below.
           </p>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h2 className="text-lg font-bold text-slate-900">Telephone</h2>
-              <p className="mt-2 text-slate-700">+255 690 154 334</p>
-              <p className="text-slate-700">
-                +255 690 154 332 <span className="text-sm">(WhatsApp)</span>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {/* Telephone */}
+            <div className="rounded-[36px] bg-white/15 px-8 py-10 backdrop-blur-sm">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Telephone</h2>
+
+              <div className="mt-6 space-y-3 text-lg sm:text-2xl text-white/95">
+                <a className="block hover:underline" href="tel:+255690154334">
+                  +255 690 154 334
+                </a>
+                <a className="block hover:underline" href="tel:+255690154332">
+                  +255 690 154 332 <span className="text-white/85 text-base sm:text-xl">(WhatsApp)</span>
+                </a>
+              </div>
+
+              <p className="mt-6 text-sm sm:text-base text-white/85">
+                If calling from outside Tanzania, ensure your phone plan supports international calling.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h2 className="text-lg font-bold text-slate-900">Email</h2>
-              <p className="mt-2 text-slate-700">
-                General: <span className="font-semibold">info.gpps@katokifoundation.org</span>
-              </p>
-              <p className="mt-2 text-slate-700">
-                Director: <span className="font-semibold">director.gpps@katokifoundation.org</span>
+            {/* Email */}
+            <div className="rounded-[36px] bg-white/15 px-8 py-10 backdrop-blur-sm">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Email</h2>
+
+              <div className="mt-6 space-y-5 text-white/95">
+                <div>
+                  <p className="text-base sm:text-lg font-semibold text-white/90">General enquiries:</p>
+                  <a className="mt-1 block text-lg sm:text-2xl hover:underline" href="mailto:info.gpps@katokifoundation.org">
+                    info.gpps@katokifoundation.org
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-base sm:text-lg font-semibold text-white/90">Director:</p>
+                  <a
+                    className="mt-1 block text-lg sm:text-2xl hover:underline"
+                    href="mailto:director.gpps@katokifoundation.org"
+                  >
+                    director.gpps@katokifoundation.org
+                  </a>
+                </div>
+              </div>
+
+              <p className="mt-6 text-sm sm:text-base text-white/85">
+                We typically respond within 1–2 working days.
               </p>
             </div>
           </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-base font-bold text-blue-700 shadow-md hover:bg-slate-50"
+            >
+              About & Governance →
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

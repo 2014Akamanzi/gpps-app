@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import ContactPanel from "../components/ContactPanel";
 
-const images = [
+const galleryImages = [
   "/gpps/01.jpg",
   "/gpps/02.jpg",
   "/gpps/03.jpg",
@@ -19,42 +20,56 @@ const images = [
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen px-4 py-12">
-      <div className="mx-auto w-full max-w-6xl space-y-10">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <h1 className="text-4xl font-extrabold text-slate-900">
-            GPPS Gallery
-          </h1>
-
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition"
-          >
-            ← Back to home
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      {/* Top Nav */}
+      <header className="mx-auto w-full max-w-6xl px-4 py-6">
+        <nav className="flex flex-wrap items-center justify-between gap-3">
+          <Link href="/" className="text-sm font-semibold text-slate-700 hover:underline">
+            ← Back to Home
           </Link>
-        </div>
 
-        {/* Image grid */}
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-          {images.map((src, index) => (
-            <div
-              key={index}
-              className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200 bg-slate-100"
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/about"
+              className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-50"
             >
-              <Image
-                src={src}
-                alt={`GPPS image ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw,
-                       (max-width: 1200px) 50vw,
-                       33vw"
-              />
-            </div>
-          ))}
+              About & Governance
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+            >
+              Contact
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      <section className="mx-auto w-full max-w-6xl px-4 pb-10">
+        <div className="rounded-3xl bg-white/90 backdrop-blur border border-slate-200 shadow-xl p-6 sm:p-10">
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+            Gallery
+          </h1>
+          <p className="mt-3 text-slate-600 max-w-3xl">
+            Moments from learning, play, and community at GPPS.
+          </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {galleryImages.map((src) => (
+              <div
+                key={src}
+                className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm"
+              >
+                <div className="relative aspect-[4/3]">
+                  <Image src={src} alt="GPPS gallery image" fill className="object-cover" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <ContactPanel />
     </main>
   );
 }
